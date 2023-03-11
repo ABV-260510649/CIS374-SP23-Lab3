@@ -18,6 +18,53 @@ namespace Lab3
             //Console.WriteLine("[{0}]", string.Join(", ", doubleList.ToArray());
 
 
+            BubbleSort<int> bubbleSort = new BubbleSort<int>();
+            Console.WriteLine("BUBBLE SORT");
+
+            totalTime = 0;
+
+            for (int i = 0; i < 11; i++)
+            {
+                List<int> intListCopy = new List<int>(intList);   // make a copy of the original unsorted array
+
+                totalTime += TimeSort<int>(bubbleSort, intListCopy);
+            }
+
+            averageTime = totalTime / 11;
+            Console.WriteLine($"{averageTime}");
+
+
+
+            InsertionSort<int> insertionSort = new InsertionSort<int>();
+            Console.WriteLine("INSERTION SORT");
+            totalTime = 0;
+
+            for (int i = 0; i < 11; i++)
+            {
+                List<int> intListCopy = new List<int>(intList);   // make a copy of the original unsorted array
+
+                totalTime += TimeSort<int>(insertionSort, intListCopy);
+            }
+
+            averageTime = totalTime / 11;
+            Console.WriteLine($"{averageTime}");
+
+
+
+            BucketSort bucketSort = new BucketSort();
+            Console.WriteLine("BUCKET SORT");
+            totalTime = 0;
+
+            for (int i = 0; i < 11; i++)
+            {
+                List<int> intListCopy = new List<int>(intList);   // make a copy of the original unsorted array
+
+                totalTime += TimeSort(bucketSort, intListCopy);
+            }
+
+            averageTime = totalTime / 11;
+            Console.WriteLine($"{averageTime}");
+
 
 
             /*BubbleSort<int> bubbleSort = new BubbleSort<int>();
@@ -144,7 +191,7 @@ namespace Lab3
             // start timer
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
-            sortable.Sort(array);
+            var sorted = sortable.Sort(array);
 
             // end timer
             stopWatch.Stop();
