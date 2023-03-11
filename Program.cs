@@ -10,61 +10,12 @@ namespace Lab3
     {
         static void Main(string[] args)
         {
-            List<int> intList = GenerateRandomIntList(3, 10);
+            List<int> intList = GenerateRandomIntList(1_000, 5000);
 
             //List<double> doubleList = GenerateRandomDoubleList(100, 500);
 
             //Console.WriteLine("[{0}]", string.Join(", ", intList.ToArray()));
             //Console.WriteLine("[{0}]", string.Join(", ", doubleList.ToArray());
-
-
-            BubbleSort<int> bubbleSort = new BubbleSort<int>();
-            Console.WriteLine("BUBBLE SORT");
-
-            totalTime = 0;
-
-            for (int i = 0; i < 11; i++)
-            {
-                List<int> intListCopy = new List<int>(intList);   // make a copy of the original unsorted array
-
-                totalTime += TimeSort<int>(bubbleSort, intListCopy);
-            }
-
-            averageTime = totalTime / 11;
-            Console.WriteLine($"{averageTime}");
-
-
-
-            InsertionSort<int> insertionSort = new InsertionSort<int>();
-            Console.WriteLine("INSERTION SORT");
-            totalTime = 0;
-
-            for (int i = 0; i < 11; i++)
-            {
-                List<int> intListCopy = new List<int>(intList);   // make a copy of the original unsorted array
-
-                totalTime += TimeSort<int>(insertionSort, intListCopy);
-            }
-
-            averageTime = totalTime / 11;
-            Console.WriteLine($"{averageTime}");
-
-
-
-            BucketSort bucketSort = new BucketSort();
-            Console.WriteLine("BUCKET SORT");
-            totalTime = 0;
-
-            for (int i = 0; i < 11; i++)
-            {
-                List<int> intListCopy = new List<int>(intList);   // make a copy of the original unsorted array
-
-                totalTime += TimeSort(bucketSort, intListCopy);
-            }
-
-            averageTime = totalTime / 11;
-            Console.WriteLine($"{averageTime}");
-
 
 
             /*BubbleSort<int> bubbleSort = new BubbleSort<int>();
@@ -122,6 +73,16 @@ namespace Lab3
             }
 
             Console.WriteLine($"Average: {totalTime / 11}");*/
+
+            PigeonholeSort pigeonholeSort = new PigeonholeSort();
+            double totalTime = 0;
+            Console.WriteLine("PIGEONHOLE SORT");
+            for (int i = 0; i < 11; i++)
+            {
+                List<int> intListCopy = new List<int>(intList);
+                totalTime += TimeSort(pigeonholeSort, intListCopy);
+            }
+            Console.WriteLine($"Average: {totalTime / 11}");
 
 
             //TreeSort<int> treeSort = new TreeSort<int>();

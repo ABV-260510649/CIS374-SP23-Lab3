@@ -7,7 +7,6 @@
 
   <ItemGroup>
     <Folder Include="Helpers\" />
-    <Folder Include="Sorting Algorithms\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Helpers\BST.cs" />
