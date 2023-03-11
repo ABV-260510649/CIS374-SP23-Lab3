@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Lab3.SortingAlgorithms;
 using System.Diagnostics;
+using Lab3.Sorting_Algorithms;
 
 namespace Lab3
 {
@@ -9,34 +10,72 @@ namespace Lab3
     {
         static void Main(string[] args)
         {
-            List<int> intList = GenerateRandomIntList(10000, 50000);
-            
+            List<int> intList = GenerateRandomIntList(3, 10);
+
             //List<double> doubleList = GenerateRandomDoubleList(100, 500);
 
-            Console.WriteLine("[{0}]", string.Join(", ", intList.ToArray()));
-            //Console.WriteLine("[{0}]", string.Join(", ", doubleList.ToArray()));
+            //Console.WriteLine("[{0}]", string.Join(", ", intList.ToArray()));
+            //Console.WriteLine("[{0}]", string.Join(", ", doubleList.ToArray());
 
 
-            //bubbleSort.Sort(ref intListCopy);
 
-            //BucketSort<int> bucketSort = new BucketSort<int>();
-            //bucketSort.Sort(ref intListCopy);
 
-            //HeapSort<int> heapSort = new HeapSort<int>();
-            //heapSort.Sort(ref intList);
+            /*BubbleSort<int> bubbleSort = new BubbleSort<int>();
+            double totalTime = 0;
+            Console.WriteLine("BUBBLE SORT");
+            for (int i = 0; i < 11; i++)
+            {
+                List<int> intListCopy = new List<int>(intList);
+                totalTime += TimeSort<int>(bubbleSort, intListCopy);
+            }
 
-            //MergeSort<int> mergeSort = new MergeSort<int>();
-            //mergeSort.Sort(ref intList);
+            Console.WriteLine($"{totalTime / 11}");*/
 
-            //InsertionSort<int> insertionSort = new InsertionSort<int>();
-            //insertionSort.Sort(ref intList);
+            /*InsertionSort<int> insertionSort = new InsertionSort<int>();
+            double totalTime = 0;
+            Console.WriteLine("INSERTION SORT");
+            for (int i = 0; i < 11; i++)
+            {
+                List<int> intListCopy = new List<int>(intList);
+                totalTime += TimeSort<int>(insertionSort, intListCopy);
+            }
 
-            //SelectionSort<int> selectionSort = new SelectionSort<int>();
-            //selectionSort.Sort(ref intList);
+            Console.WriteLine($"Average: {totalTime / 11}");*/
 
-            //quickSort.Sort(ref intList);
-            //QuickSort<double> quickSortDouble = new QuickSort<double>();
-            //quickSortDouble.Sort(ref doubleList);
+            /*QuickSort<int> quickSort = new QuickSort<int>();
+            double totalTime = 0;
+            Console.WriteLine("QUICK SORT");
+            for (int i = 0; i < 11; i++)
+            {
+                List<int> intListCopy = new List<int>(intList);
+                totalTime += TimeSort<int>(quickSort, intListCopy);
+            }
+
+            Console.WriteLine($"Average: {totalTime / 11}");*/
+
+
+            /*HeapSort<int> heapSort = new HeapSort<int>();
+            double totalTime = 0;
+            Console.WriteLine("HEAP SORT");
+            for (int i = 0; i < 11; i++)
+            {
+                List<int> intListCopy = new List<int>(intList);
+                totalTime += TimeSort<int>(heapSort, intListCopy);
+            }
+
+            Console.WriteLine($"Average: {totalTime / 11}");*/
+
+            /*RadixSort radixSort = new RadixSort();
+            double totalTime = 0;
+            Console.WriteLine("RADIX SORT");
+            for (int i = 0; i < 11; i++)
+            {
+                List<int> intListCopy = new List<int>(intList);
+                totalTime += TimeSort(radixSort, intListCopy);
+            }
+
+            Console.WriteLine($"Average: {totalTime / 11}");*/
+
 
             //TreeSort<int> treeSort = new TreeSort<int>();
             //treeSort.Sort(ref intList);
@@ -44,7 +83,7 @@ namespace Lab3
             //Console.WriteLine("[{0}]", string.Join(", ", intList.ToArray()));
             //Console.WriteLine("[{0}]", string.Join(", ", doubleList.ToArray()));
 
-            Console.WriteLine("QUICKSORT");
+            /*Console.WriteLine("QUICKSORT");
             QuickSort<int> quickSort = new QuickSort<int>();
             for( int i = 0; i < 11; i++)
             {
@@ -57,7 +96,7 @@ namespace Lab3
             {
                 List<int> intListCopy = new List<int>(intList);   // make a copy of the original unsorted array
                 TimeSort(mergeSort, intListCopy);
-            }
+            }*/
 
             //MergeSort<int> mergeSort = new MergeSort<int>();
             //intListCopy = new List<int>(intList);   // make a copy of the original unsorted array
@@ -77,7 +116,7 @@ namespace Lab3
 
         }
 
-        public static void TimeSort<T>(ISortable<T> sortable, List<T> items) where T : IComparable<T>
+        public static double TimeSort<T>(ISortable<T> sortable, List<T> items) where T : IComparable<T>
         {
             // start timer
             Stopwatch stopWatch = new Stopwatch();
@@ -96,14 +135,16 @@ namespace Lab3
             // print elapsed time data
             Console.WriteLine(ts.TotalSeconds);
 
+            return ts.TotalSeconds;
         }
 
-        public static void TimeSort(ISortableInt sortable, List<int> items)
+        public static double TimeSort(ISortableInt sortable, List<int> items)
         {
+            int[] array = items.ToArray();
             // start timer
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
-            sortable.Sort(items.ToArray());
+            sortable.Sort(array);
 
             // end timer
             stopWatch.Stop();
@@ -115,11 +156,9 @@ namespace Lab3
             //Console.WriteLine(sortable.GetType().ToString());
 
             // print elapsed time data
-            //string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
-            //ts.Hours, ts.Minutes, ts.Seconds,
-            //ts.Milliseconds / 10);
-            //Console.WriteLine(elapsedTime);
             Console.WriteLine(ts.TotalSeconds);
+
+            return ts.TotalSeconds;
         }
 
 
