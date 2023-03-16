@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Lab3.SortingAlgorithms;
 using System.Diagnostics;
 using Lab3.Sorting_Algorithms;
+using System.Linq;
 
 namespace Lab3
 {
@@ -10,15 +11,28 @@ namespace Lab3
     {
         static void Main(string[] args)
         {
-            List<int> intList = GenerateRandomIntList(1_000, 5000);
+            List<int> intList = GenerateRandomIntList(10_000_000, 5000);
 
             //List<double> doubleList = GenerateRandomDoubleList(100, 500);
 
-            //Console.WriteLine("[{0}]", string.Join(", ", intList.ToArray()));
+            Console.WriteLine("[{0}]", string.Join(", ", intList.ToArray()));
             //Console.WriteLine("[{0}]", string.Join(", ", doubleList.ToArray());
 
+        
 
-            /*BubbleSort<int> bubbleSort = new BubbleSort<int>();
+        /*BubbleSort<int> bubbleSort = new BubbleSort<int>();
+            bubbleSort.Sort(ref intList);
+            for (int i = 0; i < intList.Count * 0.025; i++)
+            {
+                var rand = new Random();
+                var rand1 = rand.Next(0, intList.Count);
+                var rand2 = rand.Next(0, intList.Count);
+                var temp = rand1;
+                intList[rand1] = rand2;
+                intList[rand2] = temp;
+            }
+            Console.WriteLine("[{0}]", string.Join(", ", intList.ToArray()));
+
             double totalTime = 0;
             Console.WriteLine("BUBBLE SORT");
             for (int i = 0; i < 11; i++)
@@ -27,9 +41,19 @@ namespace Lab3
                 totalTime += TimeSort<int>(bubbleSort, intListCopy);
             }
 
-            Console.WriteLine($"{totalTime / 11}");*/
+            Console.WriteLine($" Average: {totalTime / 11}");*/
 
             /*InsertionSort<int> insertionSort = new InsertionSort<int>();
+            insertionSort.Sort(ref intList);
+            for (int i = 0; i < intList.Count * 0.025; i++)
+            {
+                var rand = new Random();
+                var rand1 = rand.Next(0, intList.Count);
+                var rand2 = rand.Next(0, intList.Count);
+                var temp = rand1;
+                intList[rand1] = rand2;
+                intList[rand2] = temp;
+            }
             double totalTime = 0;
             Console.WriteLine("INSERTION SORT");
             for (int i = 0; i < 11; i++)
@@ -41,6 +65,16 @@ namespace Lab3
             Console.WriteLine($"Average: {totalTime / 11}");*/
 
             /*QuickSort<int> quickSort = new QuickSort<int>();
+            quickSort.Sort(ref intList);
+            for (int i = 0; i < intList.Count * 0.025; i++)
+            {
+                var rand = new Random();
+                var rand1 = rand.Next(0, intList.Count);
+                var rand2 = rand.Next(0, intList.Count);
+                var temp = rand1;
+                intList[rand1] = rand2;
+                intList[rand2] = temp;
+            }
             double totalTime = 0;
             Console.WriteLine("QUICK SORT");
             for (int i = 0; i < 11; i++)
@@ -53,6 +87,16 @@ namespace Lab3
 
 
             /*HeapSort<int> heapSort = new HeapSort<int>();
+            heapSort.Sort(ref intList);
+            for (int i = 0; i < intList.Count * 0.025; i++)
+            {
+                var rand = new Random();
+                var rand1 = rand.Next(0, intList.Count);
+                var rand2 = rand.Next(0, intList.Count);
+                var temp = rand1;
+                intList[rand1] = rand2;
+                intList[rand2] = temp;
+            }
             double totalTime = 0;
             Console.WriteLine("HEAP SORT");
             for (int i = 0; i < 11; i++)
@@ -64,25 +108,48 @@ namespace Lab3
             Console.WriteLine($"Average: {totalTime / 11}");*/
 
             /*RadixSort radixSort = new RadixSort();
+            var sorted = radixSort.Sort(intList.ToArray());
+            sorted.ToList();
+            for (int i = 0; i < intList.Count * 0.025; i++)
+            {
+                var rand = new Random();
+                var rand1 = rand.Next(0, intList.Count);
+                var rand2 = rand.Next(0, intList.Count);
+                var temp = rand1;
+                sorted[rand1] = rand2;
+                sorted[rand2] = temp;
+            }
             double totalTime = 0;
             Console.WriteLine("RADIX SORT");
             for (int i = 0; i < 11; i++)
             {
-                List<int> intListCopy = new List<int>(intList);
+                List<int> intListCopy = new List<int>(sorted);
                 totalTime += TimeSort(radixSort, intListCopy);
             }
 
             Console.WriteLine($"Average: {totalTime / 11}");*/
 
             PigeonholeSort pigeonholeSort = new PigeonholeSort();
+            var sorted = pigeonholeSort.Sort(intList.ToArray());
+            sorted.ToList();
+            Console.WriteLine("[{0}]", string.Join(", ", sorted.ToArray()));
+            /*for (int i = 0; i < intList.Count * 0.025; i++)
+            {
+                var rand = new Random();
+                var rand1 = rand.Next(0, intList.Count);
+                var rand2 = rand.Next(0, intList.Count);
+                var temp = rand1;
+                sorted[rand1] = rand2;
+                sorted[rand2] = temp;
+            }
             double totalTime = 0;
             Console.WriteLine("PIGEONHOLE SORT");
             for (int i = 0; i < 11; i++)
             {
-                List<int> intListCopy = new List<int>(intList);
+                List<int> intListCopy = new List<int>(sorted);
                 totalTime += TimeSort(pigeonholeSort, intListCopy);
             }
-            Console.WriteLine($"Average: {totalTime / 11}");
+            Console.WriteLine($"Average: {totalTime / 11}");*/
 
 
             //TreeSort<int> treeSort = new TreeSort<int>();
